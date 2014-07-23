@@ -16,7 +16,7 @@
 /tmp
 
 /config/database.yml
-#/config/secrets.yml
+/config/secrets.yml
 *~
 .idea
 .secret
