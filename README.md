@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/LegaKh/LuckyFind.png?branch=dev)](https://travis-ci.org/LegaKh/LuckyFind)
+
 ## LuckyFind is a lost and found web office.
 
 Someone lost. Someone found. Our app helps regain lost things back.
