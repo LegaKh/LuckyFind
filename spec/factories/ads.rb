@@ -10,6 +10,18 @@ FactoryGirl.define do
     user_id { rand(1..1000) }
     content_id { rand(1..1000) }
     content_type { ["Doc","Pet","LicensePlate"].sample }
-    
+    association :user
+  end
+ 
+  factory :ad_doc, class: "Ad" do
+    association :content, factory: :doc
+  end
+ 
+  factory :ad_pet, class: "Ad" do
+    association :content, factory: :pet
+  end
+ 
+  factory :ad_license_plate, class: "Ad" do
+    association :content, factory: :license_plate
   end
 end
