@@ -2,13 +2,14 @@
 
 FactoryGirl.define do
   factory :ad do
-    title "MyString"
-    city "MyString"
-    street "MyString"
-    date "2014-07-26"
-    description "MyText"
-    user_id 1
-    content_id 1
-    content_type "MyString"
+    title { Faker::Lorem.word }
+    city { Faker::Address.city }
+    street { Faker::Address.street_name }
+    date { rand(10**4).days.since }
+    description { Faker::Lorem.paragraph }
+    user_id { rand(1..1000) }
+    content_id { rand(1..1000) }
+    content_type { ["Doc","Pet","LicensePlate"].sample }
+    
   end
 end
