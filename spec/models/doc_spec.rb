@@ -1,19 +1,5 @@
 require 'rails_helper'
 
-
-describe Doc do
-
-  it "has a valid factory" do
-
-    expect(FactoryGirl.build(:doc)).to be_valid
-    
-  end
-
-  it { is_expected.to have_one(:ad).dependent(:destroy) }
-
+RSpec.describe Doc, :type => :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
-
-
-
-
-

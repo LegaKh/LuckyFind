@@ -30,8 +30,6 @@ gem 'rails_12factor',     group: :production
 
 gem 'rake',               group: :test
 
-gem 'devise'
-
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'
