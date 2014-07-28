@@ -1,10 +1,9 @@
 class CreateDocs < ActiveRecord::Migration
   def change
     create_table :docs do |t|
-      t.string :doc_type
-      t.string :doc_code
-      t.string :first_name
-      t.string :last_name
+      t.string :type
+      t.string :first_name, limit: 30
+      t.string :last_name, limit: 30
     end
   end
 end
