@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :license_plate do
-    number "MyString"
+    number { Faker::Lorem.characters(rand(5..10)) }
   end
 end
