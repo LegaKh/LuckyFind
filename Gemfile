@@ -31,6 +31,7 @@ gem 'rails_12factor',     group: :production
 gem 'rake',               group: :test
 
 gem 'devise'
+gem 'foundation-rails'
 
 group :development, :test do
   gem 'pry-rails'
