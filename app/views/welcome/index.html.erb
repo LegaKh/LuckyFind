@@ -1,0 +1,6 @@
+<div id="ads">
+  <h3 style="text-align: center">Latest finds:</h3>
+  <% @ads.each do |a| %>
+    <%= "#{a.user.first_name} #{a.user.last_name} - #{a.title} - #{a.city} - #{a.description}" %><br>
+  <% end %>
+</div>
