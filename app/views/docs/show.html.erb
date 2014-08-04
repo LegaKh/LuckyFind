@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<div class="ad">
+	<div class="row">
+		<div class="title small-6 large-6 columns"> <h3><%= @doc.ad.title %></h3> </div>
+		<div class="small-3 large-3 columns"></div>
+		<div class="date small-3 large-3 columns"> <p> <%= @doc.ad.created_at %> </p></div>
+	</div>
+	
+	<div class="row">
+		<div class="small-11 large-11 large-centered small-centered columns">
+			<p> <%= @doc.ad.description %> </p>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="small-4 large-4 columns"> <p>Location: <%= "#{@doc.ad.city}, #{@doc.ad.street}" %> </p></div>
+		<div class="small-4 large-4 columns"></div>
+		<div class="small-4 large-4 columns"> <p>Finder: <%= "#{@doc.ad.user.first_name} #{@doc.ad.user.last_name}" %> </p></div>
+	</div>
+
+  <div class="row">
+    <div class="small-4 large-4 columns"><p>doc type: <%= @doc.doc_type %></p></div>
+    <div class="small-4 large-4 columns"><p>Doc code: <%= @doc.doc_code %></p></div>
+    <div class="small-4 large-4 columns"><p>First name: <%= @doc.first_name %></p></div>
+    <div class="small-4 large-4 columns"><p>Last name: <%= @doc.last_name %></p></div>
+  </div>
+
+</div>  
+
+<%= link_to 'Edit', edit_doc_path(@doc) %> |
+<%= link_to 'Back', docs_path %>

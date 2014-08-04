@@ -12,31 +12,73 @@
 
   <body>
 
-  <nav class="top-bar" data-topbar>
-    <ul class="title-area">
-      <li class="name">
-        <h1><%= link_to "LuckyFind", root_path %></h1>
-      </li>
-    </ul>
-    <ul>
-      <li>
-        <% if user_signed_in? %>
-          <div id="sign_in_btn">Hi, <%= current_user.first_name %>!
-          <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></div>
-        <% else %>
-        <%#= link_to 'Sign in', new_user_session_path %>
-          <div id="sign_up_btn"><%= link_to 'Sign Up', new_user_registration_path, class: "button small" %></div>
-        <% end %>
-      </li>
-    </ul>
-  </nav>
 
-  <% if alert %>
-      <p class="alert alert-danger" id="alert">
-        <%= alert %></p>
-  <% end %>
 
+<div class="row">
+  <div class="small-12 large-12">
+  
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to "LuckyFind", root_path %></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+
+          <!-- Right Nav Section -->
+       <% if user_signed_in? %>
+          <ul class="right show-for-large-up">
+            <li class="active"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+          </ul>
+
+          <ul class="right hide-for-large-up">
+            <li class="active"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+          </ul>
+
+      <% else %>
+          <ul class="right show-for-large-up">
+            <li class="active"><%= link_to 'Sign In', new_user_session_path %></li>
+            <li class="active"><%= link_to 'Sign Up', new_user_registration_path %></li>
+          </ul>
+
+          <ul class="right hide-for-large-up">
+            <li class="active"><%= link_to 'Sign In', new_user_session_path %></li>
+            <li class="active"><%= link_to 'Sign Up', new_user_registration_path %></li>
+          </ul>
+      <% end %>
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li><%= link_to 'Pets', pets_path %></li>
+          <li><%= link_to 'Docs', docs_path %></li>
+        </ul>
+      </section>
+    </nav>
+
+  </div>
+</div>
+
+
+    <div class="row">
+      <div class="small-6 large-6 large-centered small-centered columns">
+      <% if alert %>
+          <div data-alert class="alert-box alert radius">
+            <%= alert %><a href="#" class="close">&times;</a>
+          </div>
+      <% end %>
+      
+      <% if notice %>
+        <div data-alert class="alert-box success radius">
+          <%= notice %><a href="#" class="close">&times;</a>
+        </div>
+      <% end %>
+      </div>
+    </div>
+
+<div class="small-9 large-9 large-centered small-centered columns ads">
     <%= yield %>
+</div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>
