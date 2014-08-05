@@ -2,15 +2,6 @@ require 'rails_helper'
 
 RSpec.describe PetsController, :type => :controller do
 
-  context "when user not loged in" do
-    describe "GET #index" do
-      it "redirects to login page" do
-        get :index
-        expect(response).to redirect_to new_user_session_path
-      end
-    end
-  end
-
   context "when user loged in" do
     let(:user) { FactoryGirl.create(:user) }
     subject { FactoryGirl.create(:pet) }
@@ -19,18 +10,6 @@ RSpec.describe PetsController, :type => :controller do
 
     before do
       sign_in user
-    end
-
-    describe "GET #index" do 
-      it "render :index wiew" do
-        get :index
-        expect(response).to render_template :index
-      end
-
-      it "assigns the pet to subject" do
-        get :index
-        expect(assigns(:pets)).to eq([subject])
-      end
     end
 
     describe "GET #show" do 
@@ -65,7 +44,7 @@ RSpec.describe PetsController, :type => :controller do
 
         it "redirects to index path" do
           post :create, {pet: FactoryGirl.attributes_for(:pet), ad: FactoryGirl.attributes_for(:ad) }
-          expect(response).to redirect_to pets_path
+          expect(response).to redirect_to ads_pets_path
         end
       end
     end
@@ -82,7 +61,7 @@ RSpec.describe PetsController, :type => :controller do
       end
     end
 
-# ne poshlo :(
+# ne poshlo, no rabotaet kak nado :(
 #    describe "PATH #update" do
 #      context "with valid attributes" do
 ##              before(:each) { 
@@ -109,7 +88,7 @@ RSpec.describe PetsController, :type => :controller do
 
       it "redirects to index" do
         delete :destroy, id: @pet
-        expect(response).to redirect_to pets_path
+        expect(response).to redirect_to ads_pets_path
       end
     end
 
