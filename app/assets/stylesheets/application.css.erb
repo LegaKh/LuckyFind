@@ -16,7 +16,8 @@
 
  */
 body {
-    background-image: url(<%= asset_path 'bg.gif' %>)
+    background-image: url(<%= asset_path 'bg.jpg' %>);
+    background-attachment: fixed;
 }
 
 #sign {
@@ -49,4 +50,10 @@ body {
   background-color: rgba(255,255,255,0.9);
   margin-bottom: 20px;
   max-width: 62.5rem;
+}
+
+.inline_block {
+  display: inline-block;
+  padding: 0 10px 0 10px;
+  margin-top: 20px
 }

@@ -32,6 +32,8 @@ gem 'rake',               group: :test
 
 gem 'devise'
 gem 'foundation-rails'
+gem 'cancancan', '~> 1.9'
+gem 'enumerize'
 
 group :development, :test do
   gem 'pry-rails'

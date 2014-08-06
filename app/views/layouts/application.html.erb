@@ -30,10 +30,12 @@
           <!-- Right Nav Section -->
        <% if user_signed_in? %>
           <ul class="right show-for-large-up">
+            <li class="active"><%= link_to 'Profile', edit_user_registration_path %></li>
             <li class="active"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
           </ul>
 
           <ul class="right hide-for-large-up">
+            <li class="active"><%= link_to 'Profile', edit_user_registration_path %></li>
             <li class="active"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
           </ul>
 
@@ -77,7 +79,7 @@
       </div>
     </div>
 
-<div class="small-9 large-9 large-centered small-centered columns ads">
+<div class="large-centered small-centered columns ads">
     <%= yield %>
 </div>
     <%= javascript_include_tag "application" %>

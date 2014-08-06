@@ -11,6 +11,7 @@ class PetsController < ApplicationController
   end
 
   def edit
+    authorize! :edit, @pet.user
   end
 
   def create

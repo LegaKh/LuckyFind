@@ -1,5 +1,5 @@
 <% @content.each do |cont|  %>
-<div class="ad">
+<div class="ad small-12 large-12 columns">
 	<div class="row">
 		<div class="title small-6 large-6 columns"> <h3><%= cont.title %></h3> </div>
 		<div class="small-3 large-3 columns"></div>
@@ -33,7 +33,7 @@
 
 	<div class="row">
     <div class="small-3 large-1 columns"><%= link_to 'Show', cont.content, class: "button small success" %></div>
-    <% if user_signed_in? && current_user.id == cont.user_id %>
+    <% if can? :manage, cont %>
       <div class="small-3 large-1 columns"><%= link_to 'Edit', edit_polymorphic_path(cont.content), class: "button small success" %></div>
       <div class="small-2 large-1 columns"><%= link_to 'Destroy', cont.content, class: "button small alert", method: :delete, data: { confirm: 'Are you sure?' } %></div>
       <div class="small-2 large-1 columns"></div>

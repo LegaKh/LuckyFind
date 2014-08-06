@@ -62,20 +62,24 @@ RSpec.describe PetsController, :type => :controller do
     end
 
 # ne poshlo, no rabotaet kak nado :(
-#    describe "PATH #update" do
-#      context "with valid attributes" do
-##              before(:each) { 
-##                      subject.create_ad(user_id: user.id, content_type: 'Pet', content_id: subject.id )}
-#        it "updates pet" do
-#          expect{ patch :update, id: subject, pet: { pet_type: 'bird'}}.to change##{ subject.reload.pet_type }.to('bird')
-#        end
-#
-#        it "renders to index path" do
-#          patch :update, id: subject,  pet: { pet_type: 'bird'}
-#          expect(response).to redirect_to pets_path
-#        end
-#      end    
-#    end
+    describe "PATH #update" do
+      context "with valid attributes" do
+              before(:each) { @pet = FactoryGirl.create :pet
+                      @pet.create_ad(user_id: user.id, content_type: 'Pet', content_id: @pet.id )}
+
+        it "updates pet" do
+          expect{ patch :update, id: subject, pet: { pet_type: 'bird'}}.to change{ subject.reload.pet_type }.to('bird')
+        end
+
+        it "renders to index path" do
+          patch :update, id: subject,  pet: { pet_type: 'bird'}
+          expect(response).to redirect_to pets_path
+        end
+      end    
+    end
+
+
+
 
     describe "DELETE #destroy" do
       #before(:each) { @pet = FactoryGirl.create :pet}
