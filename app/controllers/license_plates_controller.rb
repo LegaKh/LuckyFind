@@ -19,11 +19,10 @@ class LicensePlatesController < ApplicationController
     @license_plate.create_ad(ad_params)
     @license_plate.ad.user_id = current_user.id
 
-
     if @license_plate.save && @license_plate.ad.save
       redirect_to ads_license_plates_path, notice: 'License plate was successfully created.'
     else
-      ender :new
+      render :new
     end
   end
 
