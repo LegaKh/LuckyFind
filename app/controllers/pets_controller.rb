@@ -16,7 +16,8 @@ class PetsController < ApplicationController
 
   def create
     @pet = Pet.new(pet_params)
-    @pet.create_ad(ad_params)
+    #@ad = Ad.new(ad_params)
+    @ad = @pet.create_ad(ad_params)
     @pet.ad.user_id = current_user.id
 
     if @pet.save && @pet.ad.save
