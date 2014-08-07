@@ -6,5 +6,10 @@ class Ad < ActiveRecord::Base
   scope :docs, -> {where(content_type: 'Doc')}
   scope :license_plates, -> {where(content_type: 'LicensePlate')}
 
+
   self.per_page = 5
+
+  validates :title, :city, :street, :date, :description, presence: true
+  #validates :content, presence: true, associated: true
+
 end
