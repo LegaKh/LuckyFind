@@ -34,7 +34,8 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'cancancan', '~> 1.9'
 gem 'enumerize'
-
+#gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-foundation'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'

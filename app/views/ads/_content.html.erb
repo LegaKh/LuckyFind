@@ -33,16 +33,27 @@
 
 	<div class="row">
     <div class="small-3 large-1 columns"><%= link_to 'Show', cont.content, class: "button small success" %></div>
-    <% if can? :manage, cont %>
+    <% if can? :edit, cont %>
       <div class="small-3 large-1 columns"><%= link_to 'Edit', edit_polymorphic_path(cont.content), class: "button small success" %></div>
+    <% end %>
+
+    <% if can? :destroy, cont %>
       <div class="small-2 large-1 columns"><%= link_to 'Destroy', cont.content, class: "button small alert", method: :delete, data: { confirm: 'Are you sure?' } %></div>
       <div class="small-2 large-1 columns"></div>
     <% end %>
 
 	</div>
-
 </div>  
 
 
-
 <% end %>
+<div class="small-5 large-5 large-centered small-centered columns">
+  asdasdasdasd
+</div>
+<br>
+<br>
+<br>
+</div>
+<div class="small-5 large-5 large-centered small-centered columns ad">
+  <%= will_paginate @content, renderer: FoundationPagination::Rails %>
+</div>

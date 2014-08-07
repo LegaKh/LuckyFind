@@ -9,8 +9,9 @@ class Ability
          can :manage, :all
        else
          can :read, :all
-         can :manage, [Ad], :user_id => user.id
-         can :manage, [Pet], :user_id => user.id
+         #can :manage, [Ad], :user_id => user.id
+         #can :manage, [Pet], :user_id => user.id
+         can :manage, :all, user_id: user.id
        end
     #
     # The first argument to `can` is the action you are giving the user

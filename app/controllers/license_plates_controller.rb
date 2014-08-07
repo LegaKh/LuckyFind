@@ -12,6 +12,7 @@ class LicensePlatesController < ApplicationController
   end
 
   def edit
+    authorize! :edit, @ad
   end
 
   def create
@@ -19,16 +20,16 @@ class LicensePlatesController < ApplicationController
     @license_plate.create_ad(ad_params)
     @license_plate.ad.user_id = current_user.id
 
-
     if @license_plate.save && @license_plate.ad.save
       redirect_to ads_license_plates_path, notice: 'License plate was successfully created.'
     else
-      ender :new
+      render :new
     end
   end
 
   def update
-      if (@ad.user_id == current_user.id) && @license_plate.update(license_plate_params) && @ad.update(ad_params)
+      authorize! :edit, @ad
+      if @license_plate.update(license_plate_params) && @ad.update(ad_params)
         redirect_to ads_license_plates_path, notice: 'License plate was successfully updated.'
       else
         render :edit
@@ -36,7 +37,8 @@ class LicensePlatesController < ApplicationController
   end
 
   def destroy
-    @license_plate.destroy if @ad.user_id == current_user.id
+    authorize! :destroy, @ad
+    @license_plate.destroy
     redirect_to ads_license_plates_url, notice: 'License plate was successfully destroyed.'
   end
 

@@ -65,15 +65,15 @@ RSpec.describe PetsController, :type => :controller do
     describe "PATH #update" do
       context "with valid attributes" do
               before(:each) { @pet = FactoryGirl.create :pet
-                      @pet.create_ad(user_id: user.id, content_type: 'Pet', content_id: @pet.id )}
+                     @ad = @pet.create_ad(user_id: user.id, content_type: 'Pet', content_id: @pet.id )}
 
         it "updates pet" do
-          expect{ patch :update, id: subject, pet: { pet_type: 'bird'}}.to change{ subject.reload.pet_type }.to('bird')
+          expect{ patch :update, id: @pet.user, pet: { pet_type: 'bird'}}.to change{ subject.reload.pet_type }.to('bird')
         end
 
         it "renders to index path" do
           patch :update, id: subject,  pet: { pet_type: 'bird'}
-          expect(response).to redirect_to pets_path
+          expect(response).to redirect_to ads_pets_path
         end
       end    
     end

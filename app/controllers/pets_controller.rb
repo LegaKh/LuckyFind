@@ -11,7 +11,7 @@ class PetsController < ApplicationController
   end
 
   def edit
-    authorize! :edit, @pet.user
+    authorize! :edit, @ad
   end
 
   def create
@@ -27,7 +27,8 @@ class PetsController < ApplicationController
   end
 
   def update
-      if (@ad.user_id == current_user.id) && @pet.update(pet_params) && @ad.update(ad_params)
+      authorize! :edit, @ad
+      if @pet.update(pet_params) && @ad.update(ad_params)
         redirect_to ads_pets_path, notice: 'Pet was successfully updated.'
       else
         render :edit
@@ -36,10 +37,9 @@ class PetsController < ApplicationController
 
 
   def destroy
-    if @ad.user_id == current_user.id
-      @pet.destroy
-      redirect_to ads_pets_url, notice: 'Pet was successfully destroyed.'
-    end
+    authorize! :destroy, @ad
+    @pet.destroy
+    redirect_to ads_pets_url, notice: 'Pet was successfully destroyed.'
   end
 
   private
