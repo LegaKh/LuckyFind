@@ -16,18 +16,24 @@ class PetsController < ApplicationController
 
   def create
     @pet = Pet.new(pet_params)
-    @pet.create_ad(ad_params)
-    @pet.ad.user_id = current_user.id
-
-    if @pet.save && @pet.ad.save
-      redirect_to ads_pets_path, notice: 'Pet was successfully created.'
-    else
-      render :new
+    @ad = @pet.create_ad(ad_params) if @pet
+    if @ad
+      @ad.user_id = current_user.id
+      if @pet.save && @ad.save
+        redirect_to ads_pets_path, notice: 'Pet was successfully created.'
+      else
+        render :new
+      end
     end
   end
 
   def update
       authorize! :edit, @ad
+      unless @ad
+        @ad = @pet.create_ad(ad_params)
+        @ad.user_id = current_user.id
+      end
+
       if @pet.update(pet_params) && @ad.update(ad_params)
         redirect_to ads_pets_path, notice: 'Pet was successfully updated.'
       else
