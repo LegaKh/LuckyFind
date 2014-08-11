@@ -1,5 +1,5 @@
 <% @content.each do |cont|  %>
-<div class="ad small-12 large-12 columns">
+<div class="ad">
 	<div class="row">
 		<div class="title small-6 large-6 columns"> <h3><%= cont.title %></h3> </div>
 		<div class="small-3 large-3 columns"></div>
@@ -47,13 +47,9 @@
 
 
 <% end %>
-<div class="small-5 large-5 large-centered small-centered columns">
-  asdasdasdasd
-</div>
 <br>
-<br>
-<br>
-</div>
 <div class="small-5 large-5 large-centered small-centered columns ad">
-  <%= will_paginate @content, renderer: FoundationPagination::Rails %>
+  <div class="large-centered small-centered column">
+    <%= will_paginate @content, renderer: FoundationPagination::Rails %>
+  </div>
 </div>

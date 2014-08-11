@@ -9,7 +9,8 @@ class Ad < ActiveRecord::Base
 
   self.per_page = 5
 
-  validates :title, :city, :street, :date, :description, presence: true
-  #validates :content, presence: true, associated: true
+  validates :title, :city, presence: true, length: { in: 2..70 }
+  validates :description, presence: true, length: { in: 20..1000 }
+  validates :street, allow_nil: true, length: { in: 0..20 }
 
 end

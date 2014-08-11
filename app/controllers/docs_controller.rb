@@ -17,18 +17,24 @@ class DocsController < ApplicationController
 
   def create
     @doc = Doc.new(doc_params)
-    @doc.create_ad(ad_params)
-    @doc.ad.user_id = current_user.id
-
-    if @doc.save && @doc.ad.save
-      redirect_to ads_docs_path, notice: 'Doc was successfully created.'
-    else
-      ender :new
+    @ad = @doc.create_ad(ad_params) if @doc
+    if @ad
+      @ad.user_id = current_user.id
+      if @doc.save && @ad.save
+        redirect_to ads_docs_path, notice: 'Doc was successfully created.'
+      else
+        render :new
+      end
     end
   end
 
   def update
       authorize! :edit, @ad
+      unless @ad
+        @ad = @doc.create_ad(ad_params)
+        @ad.user_id = current_user.id
+      end
+
       if @doc.update(doc_params) && @ad.update(ad_params)
         redirect_to ads_docs_path, notice: 'Doc was successfully updated.'
       else

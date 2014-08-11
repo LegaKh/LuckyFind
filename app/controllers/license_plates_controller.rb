@@ -17,20 +17,26 @@ class LicensePlatesController < ApplicationController
 
   def create
     @license_plate = LicensePlate.new(license_plate_params)
-    @license_plate.create_ad(ad_params)
-    @license_plate.ad.user_id = current_user.id
-
-    if @license_plate.save && @license_plate.ad.save
-      redirect_to ads_license_plates_path, notice: 'License plate was successfully created.'
-    else
-      render :new
+    @ad = @license_plate.create_ad(ad_params) if @license_plate
+    if @ad
+      @ad.user_id = current_user.id
+      if @license_plate.save && @ad.save
+        redirect_to ads_license_plates_path, notice: 'License Plate was successfully created.'
+      else
+        render :new
+      end
     end
   end
 
   def update
       authorize! :edit, @ad
+      unless @ad
+        @ad = @license_plate.create_ad(ad_params)
+        @ad.user_id = current_user.id
+      end
+
       if @license_plate.update(license_plate_params) && @ad.update(ad_params)
-        redirect_to ads_license_plates_path, notice: 'License plate was successfully updated.'
+        redirect_to ads_license_plates_path, notice: 'License Plate was successfully updated.'
       else
         render :edit
       end
