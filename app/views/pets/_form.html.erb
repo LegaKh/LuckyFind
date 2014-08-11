@@ -1,8 +1,7 @@
 <%= form_for(@pet) do |f| %>
   <% if @pet.errors.any? || @ad.errors.any? %>
-    <div data-alert class="alert-box alert radius">
+    <div data-alert class="alert-box alert radius" id="error_explanation">
       <h2><%= pluralize((@pet.errors.count + @ad.errors.count), "error") %> prohibited this ad from being saved:</h2>
-
       <ul>
       <% @pet.errors.full_messages.each do |message| %>
         <li><%= message %></li>
