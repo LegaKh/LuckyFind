@@ -20,4 +20,5 @@
 *~
 .idea
 .secret
-
+settings.env
+Procfile
