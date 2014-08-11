@@ -2,7 +2,6 @@
   <% if @license_plate.errors.any? || @ad.errors.any? %>
     <div data-alert class="alert-box alert radius">
       <h2><%= pluralize((@license_plate.errors.count + @ad.errors.count), "error") %> prohibited this ad from being saved:</h2>
-
       <ul>
       <% @license_plate.errors.full_messages.each do |message| %>
         <li><%= message %></li>
