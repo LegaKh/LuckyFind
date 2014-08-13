@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :pet do
-    pet_type { Faker::Lorem.word }
+    pet_type { Faker::Lorem.characters(2..20) }
   end
 end

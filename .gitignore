@@ -20,4 +20,6 @@
 *~
 .idea
 .secret
+.env
+Procfile
 

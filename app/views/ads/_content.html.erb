@@ -1,5 +1,5 @@
 <% @content.each do |cont|  %>
-<div class="ad">
+<div class="ad" data-ad_id="<%= cont.content.id %>">
 	<div class="row">
 		<div class="title small-6 large-6 columns"> <h3><%= cont.title %></h3> </div>
 		<div class="small-3 large-3 columns"></div>
@@ -38,7 +38,15 @@
     <% end %>
 
     <% if can? :destroy, cont %>
-      <div class="small-2 large-1 columns"><%= link_to 'Destroy', cont.content, class: "button small alert", method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      <div class="small-2 large-1 columns">
+        <% if cont.content_type == "Pet" %>
+          <span class="deletePet button small alert">Delete</span>
+        <% elsif cont.content_type == "Doc" %>
+          <span class="deleteDoc button small alert">Delete</span>
+        <% elsif cont.content_type == "LicensePlate" %>
+          <span class="deleteLicense button small alert">Delete</span>
+        <% end %>
+       </div>
       <div class="small-2 large-1 columns"></div>
     <% end %>
 

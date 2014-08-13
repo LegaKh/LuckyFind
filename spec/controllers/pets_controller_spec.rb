@@ -51,11 +51,11 @@ RSpec.describe PetsController, :type => :controller do
 
     describe "GET #edit" do 
       it "assigns the requested pet to subject" do
-        get :show, id: subject
+        get :edit, id: subject
         expect(assigns(:pet)).to eq(subject)
       end
 
-      it "renders the show view" do 
+      it "renders the edit view" do
         get :edit, id: subject
         expect(response).to render_template :edit
       end
@@ -78,9 +78,6 @@ RSpec.describe PetsController, :type => :controller do
       end    
     end
 
-
-
-
     describe "DELETE #destroy" do
       #before(:each) { @pet = FactoryGirl.create :pet}
       before(:each) { @pet = FactoryGirl.create :pet
@@ -95,9 +92,5 @@ RSpec.describe PetsController, :type => :controller do
         expect(response).to redirect_to ads_pets_path
       end
     end
-
-
-
-
-   end
+  end
 end
