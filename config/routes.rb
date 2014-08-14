@@ -2,13 +2,21 @@ Rails.application.routes.draw do
 
 
   devise_for :users
-  #get 'users/profile'
+  get 'users/profile'
 
+  resources :ads, except: :show
+  get 'ads/pets'
+  get 'ads/docs'
+  get 'ads/license_plates'
+
+  resources :pets
+  resources :docs
+  resources :license_plates
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'welcome#index'
+   root 'ads#index'
 
    #get 'users/profile', as: 'user_root'
   # Example of regular route:

@@ -16,29 +16,13 @@
 
  */
 body {
-    background-color: #e6ffbf;
+    background-image: url(<%= asset_path 'bg.jpg' %>);
+    background-attachment: fixed;
 }
 
-#sign_in {
+#sign {
     margin-top: 6%;
     margin-left: 40%;
-}
-
-#sign_up {
-    margin-top: 6%;
-    margin-left: 40%;
-}
-
-#sign_up_btn {
-    margin-top: 10px;
-    margin-right: 1%;
-    float: right
-}
-
-#sign_in_btn {
-    margin-top: 20px;
-    margin-right: 1%;
-    float: right
 }
 
 #hi {
@@ -47,17 +31,8 @@ body {
     margin-top: 1%;
 }
 
-#ads {
-    background-color: rgba(255,255,255,0.5);
-    width: 1030px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 4%;
-    margin-bottom: 1%;
-    padding: 5px;
-    border: 1px solid #fff;
-    border-radius: 20px;
+.ads {
+  max-width: 62.5rem
 }
 
 #table {
@@ -69,4 +44,16 @@ body {
     text-align: center;
     color: #ff7d83;
     font-weight: bold
+}
+
+.ad {
+  background-color: rgba(255,255,255,0.9);
+  margin-bottom: 20px;
+  max-width: 62.5rem;
+}
+
+.inline_block {
+  display: inline-block;
+  padding: 0 10px 0 10px;
+  margin-top: 20px
 }

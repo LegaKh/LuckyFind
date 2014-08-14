@@ -28,6 +28,6 @@ describe Ad do
   end
  
   it { is_expected.to belong_to(:user) }
-  it { is_expected.to belong_to(:content).dependent(:destroy) }
+  it { is_expected.to belong_to(:content) }
  
 end

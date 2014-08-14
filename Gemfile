@@ -32,7 +32,10 @@ gem 'rake',               group: :test
 
 gem 'devise'
 gem 'foundation-rails'
-
+gem 'cancancan', '~> 1.9'
+gem 'enumerize'
+#gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-foundation'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'
@@ -40,6 +43,7 @@ group :development, :test do
   gem 'pry-remote'
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.2.0'
+  gem 'foreman'
 end
 
 group :test do
